@@ -1,0 +1,26 @@
+{
+  "name": "V2ray",
+  "description": "Deploy V2Ray to Heroku.",
+  "keywords": ["V2ray"],
+  "env": {
+    "VER": {
+       "description": "默认latest安装最新版本V2Ray （输入V2Ray 版本号 进行指定版本安装。例如：3.22)",
+       "value": "latest"
+     }, 
+    "UUID": {
+       "description": "Vmess协议默认UUID，请输入UUID",
+       "value": "4550afa0-e471-4788-bbd6-e53e7fc4ddcc"
+     },
+     "V2_PATH": {
+       "description": "PATH路径，默认/GribApp",
+       "value": "/GribApp"
+     },
+    "V2RAY_RAY_BUFFER_SIZE": {
+       "description": "每个连接的缓存大小，单位MB",
+       "value": "10"
+     }
+  },
+  "website": "https://github.com/matias-ykta/caddy-hero",
+  "repository": "https://github.com/matias-ykta/caddy-hero",
+  "stack": "container"
+ }

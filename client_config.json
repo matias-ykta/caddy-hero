@@ -1,0 +1,100 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbound": {
+    "port": 8080,
+    "protocol": "http",
+    "listen": "127.0.0.1",
+    "settings": {}
+  },
+  "inboundDetour": [
+  {
+    "port": 1082,
+    "protocol": "socks",
+    "listen": "127.0.0.1",
+    "settings": {
+      "auth": "noauth",
+      "udp": true,
+      "ip": "127.0.0.1"
+    }
+  }
+  ],
+  "outbound": {
+    "protocol": "vmess",
+    "settings": {
+      "vnext": [
+      {
+         "address": "blenet.herokuapp.com", //heroku app name
+         "port": 443, 
+         "users": [
+         {
+           "id": "4550afa0-e471-4788-bbd6-e53e7fc4ddcc", //uuid
+           "alterId": 10,
+           "security": "aes-128-gcm"
+         }
+         ]
+     }
+     ]
+   },
+   "streamSettings": {
+     "network": "ws",
+     "security": "tls",
+     "tlsSettings": {
+       "serverName": "herokuapp.com",
+       "allowInsecure": true
+      },
+     "wsSettings": {
+       "path": "/GribApp" //V2_PATH
+     }
+  },
+  "mux": {
+    "enabled": true,
+    "concurrency": 16
+  }
+},
+"outboundDetour": [
+    {
+      "protocol": "freedom",
+      "settings": {},
+      "tag": "direct"
+    }
+  ],
+  "dns": {
+    "servers": [
+      "localhost"
+    ]
+  },
+  "routing": {
+    "strategy": "rules",
+    "settings": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": ["geosite:cn"],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "0.0.0.0/8",
+            "10.0.0.0/8",
+            "100.64.0.0/10",
+            "127.0.0.0/8",
+            "169.254.0.0/16",
+            "172.16.0.0/12",
+            "192.0.0.0/24",
+            "192.0.2.0/24",
+            "192.168.0.0/16",
+            "198.18.0.0/15",
+            "198.51.100.0/24",
+            "203.0.113.0/24",
+            "geoip:cn"
+          ],
+          "outboundTag": "direct"
+        }
+      ]
+    }
+  }
+}
