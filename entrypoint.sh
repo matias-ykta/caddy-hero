@@ -35,7 +35,7 @@ chmod +x caddy
 rm -rf caddy.tar.gz
 mkdir /wwwroot
 cd /wwwroot
-wget --no-check-certificate -qO 'demo.tar.gz' https://github.com/ki8852/v2ray-heroku/raw/master/demo.tar.gz
+wget --no-check-certificate -qO 'demo.tar.gz' https://github.com/matias-ykta/caddy-hero/raw/master/demo.tar.gz
 tar xvf demo.tar.gz
 rm -rf demo.tar.gz
 
