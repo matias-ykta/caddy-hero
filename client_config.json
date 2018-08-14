@@ -25,7 +25,7 @@
     "settings": {
       "vnext": [
       {
-         "address": "blenet.herokuapp.com", //heroku app name
+         "address": "balnet.herokuapp.com", //heroku app name
          "port": 443, 
          "users": [
          {
